@@ -185,4 +185,9 @@ endorsed by the ArtCraft Team, the SolidCraft contributors, Red Giant, Boris FX,
 Topaz Labs or Blackmagic Design. The ArtCraft logo folders (`docs/brand/`) are
 trademarks and are deliberately not published here.
 
+### ☕ Support My Work
+If you find this project useful, you can support me on Ko-fi:
+
+[![Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/itscybre)
+
 See [NOTICE](NOTICE) for the full statement.
