@@ -86,7 +86,8 @@ ZIP.
 ## Build it from source
 
 You need [Rust](https://rustup.rs) (stable, MSVC toolchain) and the Microsoft
-C++ build tools.
+C++ build tools. See [CONTRIBUTING.md](CONTRIBUTING.md) for the full setup and
+the project rules.
 
 ```powershell
 cd creativecraft\studio-shell
@@ -103,6 +104,15 @@ Run the shell's tests with:
 cd creativecraft\studio-shell
 cargo test
 ```
+
+## Project docs
+
+| Document | What it covers |
+|---|---|
+| [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | How one window hosts seven apps, the hand-offs between them, and the honest list of what is tightly coupled |
+| [CHANGELOG.md](CHANGELOG.md) | What each release adds, changes and does not do |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | Building, testing, the rules that are easy to break by accident, and where to report problems |
+| [docs/SHOWCASE.md](docs/SHOWCASE.md) | A shot list for recording a demo that only shows what the app really does |
 
 ## Folder layout
 
