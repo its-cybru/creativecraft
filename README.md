@@ -1,7 +1,19 @@
 # CreativeCraft
 
+![version](https://img.shields.io/badge/version-0.1.0-blue)
+![platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011%20x64-lightgrey)
+![license](https://img.shields.io/badge/license-MIT-green)
+
 One Windows window that hosts seven creative tools, with the page tabs along the
 bottom edge like DaVinci Resolve.
+
+<p align="center">
+  <img src="docs/screenshots/first-launch-photo.png" width="840"
+       alt="CreativeCraft on first launch, Photo tab: a blank 1200x800 canvas and the tab bar along the bottom">
+</p>
+
+*First launch, Photo tab. A blank 1200×800 canvas: no sample design, no layers.
+The tab bar sits along the bottom edge, DaVinci-style.*
 
 | Tab | App it hosts | What you can do there |
 |---|---|---|
@@ -20,16 +32,30 @@ design can become clips, and so on).
 
 Version **0.1.0**. Early, and honest about what it does not do yet.
 
+<p align="center">
+  <img src="docs/screenshots/first-launch-edit.png" width="840"
+       alt="CreativeCraft, Edit tab on first launch: an Untitled project, 0 items, no sequences">
+</p>
+
+*First launch, Edit tab. An "Untitled" project with 0 items and no sequence.
+Nothing is loaded until you import media or create one.*
+
 ---
 
 ## Run it (no installation, no Rust)
 
-1. Open the **Releases** page of this repository.
+**Windows 10 or 11, 64-bit.** No installer, no Rust toolchain, nothing else to
+install; to remove CreativeCraft, delete the folder.
+
+1. Open the [**latest release**](https://github.com/its-cybru/creativecraft/releases/latest).
 2. Download `CreativeCraft-0.1.0-win64.zip`.
 3. Unzip it anywhere and double-click `CreativeCraft.bat` (or `CreativeCraft.exe`).
 
 Windows will warn that the publisher is unknown, because the build is not
 code-signed. Choose **More info → Run anyway**.
+
+If Windows reports a missing `VCRUNTIME140.dll`, install the free Microsoft
+Visual C++ 2015-2022 Redistributable (x64), then start CreativeCraft again.
 
 Full release notes, requirements and limits are in the `README.txt` inside the
 ZIP.
