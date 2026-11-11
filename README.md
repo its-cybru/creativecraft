@@ -31,10 +31,10 @@ application and its real engine. The shell only supplies the window, the theme
 and the hand-offs between them (a frame from Edit can become a photo layer, a
 design can become clips, and so on).
 
-> **Relationship to ArtCraft.** CreativeCraft is an independent shell around
-> modified copies of the ArtCraft applications — FilmCraft, EffectCraft,
-> PhotoCraft, FigCraft, VectorCraft and SoundCraft. It is not made, sponsored or
-> endorsed by the ArtCraft Team, and ships none of their logos or wordmark.
+> **Credits.** CreativeCraft is based on FilmCraft, EffectCraft, PhotoCraft,
+> FigCraft, VectorCraft and SoundCraft by the ArtCraft team, bundled here as
+> modified copies. It is an independent project: not made, sponsored or endorsed
+> by the ArtCraft team, and it ships none of their logos or wordmark.
 
 Version **0.1.0**. Early, and honest about what it does not do yet.
 
