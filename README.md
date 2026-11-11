@@ -9,11 +9,12 @@ bottom edge like DaVinci Resolve.
 
 <p align="center">
   <img src="docs/screenshots/first-launch-photo.png" width="840"
-       alt="CreativeCraft on first launch, Photo tab: a blank 1200x800 canvas and the tab bar along the bottom">
+       alt="CreativeCraft on first launch, Photo tab in the Vector persona: a blank 1200x800 artboard and the tab bar along the bottom">
 </p>
 
-*First launch, Photo tab. A blank 1200×800 canvas: no sample design, no layers.
-The tab bar sits along the bottom edge, DaVinci-style.*
+*First launch, Photo tab (Vector persona). A blank 1200×800 artboard: no sample
+design, no layers, and no shared timeline yet. The tab bar sits along the bottom
+edge, DaVinci-style.*
 
 | Tab | App it hosts | What you can do there |
 |---|---|---|
