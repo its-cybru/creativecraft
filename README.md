@@ -7,6 +7,23 @@
 One Windows window that hosts seven creative tools, with the page tabs along the
 bottom edge like DaVinci Resolve.
 
+**Two familiar ideas, combined.** DaVinci Resolve puts editing, effects, colour
+and audio in one application as pages along the bottom, all sharing one project.
+Affinity puts one document behind several personas — Vector, Pixel, Layout — so
+the same design is edited from different angles. CreativeCraft does both in one
+window:
+
+- **FilmCraft and EffectCraft** are open at the same time on the same project, so
+  a cut and its motion graphics sit side by side instead of in two applications.
+- **PhotoCraft, VectorCraft and FigCraft** are three personas over one shared
+  design document, so a shape drawn in Vector is the same shape Layout sets type
+  around and Pixel paints on.
+- **SoundCraft** opens the audio of that same cut, and the local AI studio runs
+  beside them rather than in a browser tab.
+
+Nothing here is a wrapper or a mock-up: each tab runs the real application and its
+real engine, and the hand-offs move real frames and real documents between them.
+
 <p align="center">
   <img src="docs/screenshots/first-launch-photo.png" width="840"
        alt="CreativeCraft on first launch, Photo tab in the Vector persona: a blank 1200x800 artboard and the tab bar along the bottom">
