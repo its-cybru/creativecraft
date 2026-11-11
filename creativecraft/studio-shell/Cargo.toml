@@ -1,0 +1,151 @@
+[package]
+name = "studio-shell"
+version = "0.1.0"
+edition = "2024"
+publish = false
+description = "CreativeCraft: one window for the ArtCraft apps."
+
+# The PNG rasterizer is a tight per-pixel loop and is far too slow without
+# optimization. Build this crate optimized even in `cargo run`'s dev profile;
+# its dependencies stay unoptimized, so rebuilds remain quick.
+[profile.dev.package.studio-shell]
+opt-level = 2
+
+[profile.test.package.studio-shell]
+opt-level = 2
+
+# Two upstream apps bring a very large dependency graph, and rustc's debug
+# info plus incremental caches filled the disk (20 GB of `target`). CreativeCraft
+# is run, not stepped through in a native debugger, so leave debug info out.
+[profile.dev]
+debug = false
+incremental = false
+
+[profile.test]
+debug = false
+incremental = false
+
+[features]
+# FilmCraft is the shared project/timeline core behind Edit and Audio.
+# EffectCraft is the real compositor behind the Effects tab. VectorCraft is the
+# real vector editor behind the Photo tab's Vector persona. All are on by
+# default so `cargo run` starts the all-in-one studio.
+default = [
+    "filmcraft",
+    "effectcraft",
+    "vectorcraft",
+    "photocraft",
+    "figcraft",
+    "soundcraft",
+]
+filmcraft = ["dep:filmcraft-engine", "dep:filmcraft-ui-egui"]
+effectcraft = [
+    "dep:effectcraft-engine",
+    "dep:effectcraft-host",
+    "dep:effectcraft-ofx",
+    "dep:effectcraft-ui-egui",
+]
+vectorcraft = ["dep:vectorcraft-engine", "dep:vectorcraft-ui-egui"]
+figcraft = ["dep:figcraft-engine", "dep:figcraft-ui-egui", "dep:figcraft-text"]
+photocraft = [
+    "dep:photocraft-engine",
+    "dep:photocraft-io",
+    "dep:photocraft-ui-egui",
+]
+# The real SoundCraft DAW behind the Audio tab. Its engine holds the session,
+# its playback crate owns the audio device and its UI crate is one widget.
+soundcraft = [
+    "dep:soundcraft-audio-io",
+    "dep:soundcraft-engine",
+    "dep:soundcraft-playback",
+    "dep:soundcraft-ui-egui",
+]
+
+[dependencies]
+eframe = { version = "0.37", default-features = false, features = [
+    "default_fonts",
+    "wgpu",
+    "accesskit",
+    "clipboard",
+] }
+egui = { version = "0.37", features = ["default_fonts", "monochrome_emoji_fonts"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "webp"] }
+rfd = "0.15"
+fontdue = "0.9"
+epaint_default_fonts = "0.37"
+
+# The upstream FilmCraft engine and editor. We consume the local checkout at
+# commit 4eed81bb instead of copying its source, so its community updates can
+# be pulled in deliberately later. Both crates use the same pinned egui fork
+# as this shell, so the types match exactly.
+filmcraft-engine = { path = "../filmcraft/crates/engine", optional = true }
+filmcraft-ui-egui = { path = "../filmcraft/crates/ui-egui", optional = true }
+
+# The real EffectCraft compositor. Its UI is built around an egui Ui (not the
+# whole window), so the Effects tab hosts it inside the CreativeCraft frame
+# instead of rebuilding its panels from FilmCraft widgets.
+effectcraft-engine = { path = "../effectcraft/crates/engine", optional = true }
+effectcraft-host = { path = "../effectcraft/crates/host", optional = true }
+effectcraft-ofx = { path = "../effectcraft/crates/ofx", optional = true }
+effectcraft-ui-egui = { path = "../effectcraft/crates/ui-egui", optional = true }
+
+# The real VectorCraft illustrator, hosted in the Photo tab's Vector persona.
+# It draws into an egui Ui the same way EffectCraft does, and speaks SVG, which
+# is the bridge between its document and the shared CreativeCraft design.
+vectorcraft-engine = { path = "../vectorcraft/crates/engine", optional = true }
+vectorcraft-ui-egui = { path = "../vectorcraft/crates/ui-egui", optional = true }
+
+# The real PhotoCraft editor, hosted in the Photo tab's Pixel persona. Its file
+# Import/Export go through host-supplied services (codecs stay out of its UI
+# crate), so the host wires photocraft-io in.
+photocraft-engine = { path = "../photocraft/crates/engine", optional = true }
+photocraft-io = { path = "../photocraft/crates/io", optional = true }
+photocraft-ui-egui = { path = "../photocraft/crates/ui-egui", optional = true }
+
+# The real FigCraft (interface design) behind the Layout persona.
+figcraft-engine = { path = "../figcraft/crates/engine", optional = true }
+figcraft-ui-egui = { path = "../figcraft/crates/ui-egui", optional = true }
+figcraft-text = { path = "../figcraft/crates/text", optional = true }
+
+# The real SoundCraft audio workstation behind the Audio tab. Its UI is one
+# widget over an engine, like EffectCraft's, so the tab hosts it rather than
+# rebuilding a mixer from FilmCraft panels.
+soundcraft-audio-io = { path = "../soundcraft/crates/audio-io", optional = true }
+soundcraft-engine = { path = "../soundcraft/crates/engine", optional = true }
+soundcraft-playback = { path = "../soundcraft/crates/playback", optional = true }
+soundcraft-ui-egui = { path = "../soundcraft/crates/ui-egui", optional = true }
+
+# The Craft apps pin the egui family to these reviewed fork commits. We use the
+# same pins so a tab can hand egui types to an app without a version mismatch.
+[dev-dependencies]
+# The round-trip test inspects the composition EffectCraft builds.
+effectcraft-project = { path = "../effectcraft/crates/project" }
+
+[patch.crates-io]
+ecolor = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+emath = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+epaint = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+epaint_default_fonts = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+egui = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+egui-winit = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+egui-wgpu = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+egui_glow = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+egui_extras = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+egui_kittest = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+egui_system_font_provider = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+eframe = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+egui_demo_lib = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+egui_inspection = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+winit = { git = "https://github.com/storytold/winit.git", rev = "a517b3846ee8457d84ee4975110bfda6797c44dc" }
+# EffectCraft's PDF reader pins these two to the unreleased craft-libs fixes
+# that add decode limits; without the patch the released crate does not build.
+hayro-syntax = { git = "https://github.com/storytold/craft-libs", rev = "92d392cff132eaf53e13afff77f38b5c11b73aa0", version = "=0.7.2" }
+hayro-jbig2 = { git = "https://github.com/storytold/craft-libs", rev = "92d392cff132eaf53e13afff77f38b5c11b73aa0", version = "=0.3.0" }
+# VectorCraft's PDF/print stack uses craft-libs' patched krilla and hayro
+# crates; the released versions do not have the API craft-pdf is written for.
+hayro-interpret = { git = "https://github.com/storytold/craft-libs", rev = "92d392cff132eaf53e13afff77f38b5c11b73aa0" }
+hayro-cmap = { git = "https://github.com/storytold/craft-libs", rev = "92d392cff132eaf53e13afff77f38b5c11b73aa0" }
+hayro-postscript = { git = "https://github.com/storytold/craft-libs", rev = "92d392cff132eaf53e13afff77f38b5c11b73aa0" }
+krilla = { git = "https://github.com/storytold/craft-libs", rev = "92d392cff132eaf53e13afff77f38b5c11b73aa0" }

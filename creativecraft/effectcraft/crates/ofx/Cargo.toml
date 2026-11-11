@@ -1,0 +1,33 @@
+[package]
+name = "effectcraft-ofx"
+description = "EffectCraft OpenFX (OFX) host: loads and runs third-party visual effects plugins (Boris FX, Red Giant, etc.)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints.rust]
+unsafe_code = "allow"
+
+[dependencies]
+effectcraft-effects = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+log = "0.4"
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+libloading = "0.8"
+
+[target.'cfg(windows)'.dependencies]
+glow = "0.17"
+windows-sys = { version = "0.61", features = [
+    "Win32_Foundation",
+    "Win32_Graphics_Gdi",
+    "Win32_Graphics_OpenGL",
+    "Win32_System_LibraryLoader",
+    "Win32_UI_WindowsAndMessaging",
+] }
+
+[dev-dependencies]
+effectcraft-keyframe = { workspace = true }
+effectcraft-project = { workspace = true }

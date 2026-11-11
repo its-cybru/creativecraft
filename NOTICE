@@ -1,0 +1,44 @@
+CreativeCraft
+Copyright (c) 2026 CreativeCraft contributors.
+
+The CreativeCraft shell (creativecraft/studio-shell/) is licensed under the MIT
+License; see LICENSE.
+
+Bundled applications
+
+CreativeCraft contains modified copies of the following projects. Each is
+licensed under the MIT License or the Apache License, Version 2.0, at your
+option, by its own authors. Every bundled copy keeps its original LICENSE-MIT,
+LICENSE-APACHE, NOTICE and (where present) ATTRIBUTION.md, and those files
+govern that app.
+
+  EffectCraft    github.com/storytold/effectcraft      Copyright (c) 2026 ArtCraft Team and contributors
+  FilmCraft      github.com/storytold/filmcraft        Copyright (c) 2026 ArtCraft Team and contributors
+  PhotoCraft     github.com/storytold/photocraft       Copyright (c) 2026 ArtCraft Team and contributors
+  FigCraft       github.com/storytold/figcraft         Copyright (c) 2026 ArtCraft Team and contributors
+  VectorCraft    github.com/storytold/vectorcraft      Copyright (c) 2026 ArtCraft Team and contributors
+  SoundCraft     github.com/storytold/soundcraft       Copyright (c) 2026 ArtCraft Team and contributors
+  SolidCraft     github.com/tangency-labs/solidcraft   Copyright (c) 2026 SolidCraft contributors
+  Craft libs    github.com/storytold/craft-libs        Copyright (c) 2026 ArtCraft Team and contributors
+
+Third-party material
+
+The bundled applications embed and depend on third-party libraries, fonts and
+reference images under their own licences. The authoritative lists are in each
+app's NOTICE and ATTRIBUTION.md, and in its Cargo.lock. They are reproduced
+unchanged in this repository.
+
+Trademarks
+
+CreativeCraft is an independent project. It is not made, sponsored, endorsed or
+certified by the ArtCraft Team, the SolidCraft contributors, Red Giant, Boris FX,
+Topaz Labs, Blackmagic Design or Maxon.
+
+The ArtCraft name, wordmark and logos are trademarks of the ArtCraft Team and
+are not open source; see effectcraft/docs/brand/LICENSE-brand.txt upstream.
+Because this distribution is a modified, separate product, those marks are
+removed from it and are not published in this repository.
+
+Product names such as Magic Bullet, Universe, Boris FX, Topaz Video AI and
+DaVinci Resolve are trademarks of their respective owners and are used only to
+describe compatibility.

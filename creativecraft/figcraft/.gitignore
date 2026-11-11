@@ -1,0 +1,12 @@
+*~
+plan/
+plans/
+/target/
+/target-*/
+/dist/
+/corpus/
+/log/
+.DS_Store
+*.profraw
+.cache/
+.vscode/
