@@ -185,6 +185,28 @@ endorsed by the ArtCraft Team, the SolidCraft contributors, Red Giant, Boris FX,
 Topaz Labs or Blackmagic Design. The ArtCraft logo folders (`docs/brand/`) are
 trademarks and are deliberately not published here.
 
+Hi ArtCraft Team & Community,
+
+First of all, thank you for building the ArtCraft suite and the Craft Launcher ecosystem—it inspired me to build a project called **CreativeCraft**.
+
+### Repository:
+👉 https://github.com/its-cybru/creativecraft
+
+### What is this request about?
+I would love to propose integrating **CreativeCraft** into the ArtCraft Launcher alongside your other craft apps, or handing it over to the ArtCraft community to maintain, build upon, and improve.
+
+### Why I'm reaching out:
+- **Community Adoption:** You and the community are welcome to take over this project, refactor it, modify anything you want, or merge it directly into the ArtCraft ecosystem.
+- **AI & Feature Upgrades:** The project has strong potential to be expanded with AI workflows, but I have strict limits on my AI credits and personal development resources. 
+- **Better Together:** With your infrastructure, community talent, and AI integrations, I believe this project can reach its full potential far beyond what I can do alone.
+
+If you are interested in featuring it in the launcher or adopting it as part of the Craft family, please feel free to branch, fork, or adapt it however you see fit.
+
+Thank you for your time and for all the inspiring work you do!
+
+Best regards,  
+**Cybru** (@its-cybru)
+
 ### ☕ Support My Work
 If you find this project useful, you can support me on Ko-fi:
 
